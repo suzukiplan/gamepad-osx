@@ -126,6 +126,7 @@ void* gamepad_init()
     }
     append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
     append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
+    append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard);
     IOHIDManagerSetDeviceMatchingMultiple(c->hid_manager, matcher);
     CFRelease(matcher);
 
