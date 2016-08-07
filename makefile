@@ -1,5 +1,5 @@
 all:
-	gcc -o test test.c gamepad.c -framework Foundation -framework IOKit
+	gcc -DDEBUG -o test test.c gamepad.c -framework Foundation -framework IOKit
 
 format:
 	sh format.sh gamepad.c
