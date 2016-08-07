@@ -1,5 +1,5 @@
 # gamepad-osx
-- mac OS (osx) の IOKit を用いた ゲームパッド を使うプログラムです
+- mac OS (osx) 用のプログラムで IOKit (HID) を用いて ゲームパッド を使えるようにするライブラリです
 - GameController framework と違い, 様々な種類の ゲームパッド を認識できます
 
 ## License
