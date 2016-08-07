@@ -1,5 +1,3 @@
-#include <IOKit/hid/IOHIDManager.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif

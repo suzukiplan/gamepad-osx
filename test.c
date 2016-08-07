@@ -1,3 +1,4 @@
+#include <IOKit/hid/IOHIDManager.h>
 #include <unistd.h>
 #include <stdio.h>
 #include "gamepad.h"
