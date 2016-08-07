@@ -9,19 +9,19 @@
 - APIを利用 (gamepad の API の 言語インタフェース は C規約です)
 
 ## API specification
-#### initialize
+### initialize
 ```c
 void* gamepad_init();
 ```
 gamepad の device context を返す (失敗時は `NULL` を返す)
 
-#### set callback
+### set callback
 ```c
 void gamepad_set_callback(void* ctx, void (*callback)(int type, int page, int usage, int value));
 ```
-- gamepad の入力コールバックを設定
+gamepad の入力コールバックを設定
 
-#### terminate
+### terminate
 ```c
 void gamepad_term(void* ctx);
 ```
