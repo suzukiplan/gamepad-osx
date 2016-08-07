@@ -16,11 +16,9 @@ static void callback(int type, int page, int usage, int value)
 int main()
 {
     void* ctx;
-    char buf[80];
-    int i;
 
     /* initialize gamepad */
-    ctx = gamepad_init();
+    ctx = gamepad_init(1, 1, 0);
     if (!ctx) {
         puts("init failed");
         return -1;
