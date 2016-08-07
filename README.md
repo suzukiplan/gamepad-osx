@@ -27,7 +27,8 @@ void gamepad_set_callback(void* ctx, void (*callback)(int type, int page, int us
 - gamepad の入力コールバックを設定
 - type, page, usage, value の値を参照することで入力状態を確認できる
 
-参考: ELECOM の JC-U3312S シリーズでテストした結果
+_参考: ELECOM の JC-U3312S シリーズでテストした結果_
+
 |type|page|usage|value|input|description|
 |:---:|:---:|:---:|:---:|:---|:---|
 |1|1|48|0|`X axis -`|左カーソルを入力|
