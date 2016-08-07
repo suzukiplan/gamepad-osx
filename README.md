@@ -1,5 +1,5 @@
 # gamepad-osx
-- mac OS (osx) 用のプログラムで IOKit (HID) を用いて gamepad / joystick を使えるようにするライブラリです
+- mac OS (osx) 用のゲームプログラムで IOKit (HID) を用いて gamepad / joystick / keybord / mouse の入力を検出するライブラリです
 - GameController framework と違い, 様々な種類の ゲームパッド を認識できます
 
 ## License
@@ -16,15 +16,18 @@
 ## API specification
 ### initialize
 ```c
-void* gamepad_init();
+void* gamepad_init(int useGamePad, int useKeybord, int useMouse)
 ```
-gamepad の device context を返す (失敗時は `NULL` を返す)
+- gamepad の device context を返す (失敗時は `NULL` を返す)
+- `useGamePad` は 非0 で ゲームパッド/ジョイステック を使用し 0 なら使用しない
+- `useKeybord` は 非0 で キーボード を使用し 0 なら使用しない
+- `useMouse` は 非0 で マウス/トラックパッド を使用し 0 なら使用しない
 
 ### set callback
 ```c
 void gamepad_set_callback(void* ctx, void (*callback)(int type, int page, int usage, int value));
 ```
-- gamepad の入力コールバックを設定
+- gamepad, keybord, mouse の入力コールバックを設定
 - type, page, usage, value の値を参照することで入力状態を確認できる
 
 _参考: ELECOM の JC-U3312S シリーズでテストした結果_

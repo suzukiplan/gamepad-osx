@@ -31,15 +31,13 @@ static void append_matching_dictionary(CFMutableArrayRef matcher, uint32_t page,
     CFRelease(result);
 }
 
-static void device_input(void* ctx, IOReturn result, void* sender, IOHIDValueRef val)
+static void device_input(void* ctx, IOReturn result, void* sender, IOHIDValueRef value)
 {
     struct gamepad_context* c = (struct gamepad_context*)ctx;
-    IOHIDElementRef element = IOHIDValueGetElement(val);
-    int type = IOHIDElementGetType(element);
-    int page = IOHIDElementGetUsagePage(element);
-    int usage = IOHIDElementGetUsage(element);
-    int value = IOHIDValueGetIntegerValue(val);
-    if (c->callback) c->callback(type, page, usage, value);
+    if (c->callback) {
+        IOHIDElementRef element = IOHIDValueGetElement(value);
+        c->callback(IOHIDElementGetType(element), IOHIDElementGetUsagePage(element), IOHIDElementGetUsage(element), IOHIDValueGetIntegerValue(value));
+    }
 }
 
 static void device_attached(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef device)
@@ -104,7 +102,7 @@ static void device_detached(void* ctx, IOReturn result, void* sender, IOHIDDevic
     }
 }
 
-void* gamepad_init()
+void* gamepad_init(int useGamePad, int useKeybord, int useMouse)
 {
     struct gamepad_context* c;
     CFMutableArrayRef matcher;
@@ -124,8 +122,16 @@ void* gamepad_init()
         gamepad_term(c);
         return NULL;
     }
-    append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
-    append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
+    if (useGamePad) {
+        append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
+        append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
+    }
+    if (useKeybord) {
+        append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard);
+    }
+    if (useMouse) {
+        append_matching_dictionary(matcher, kHIDPage_GenericDesktop, kHIDUsage_GD_Mouse);
+    }
     IOHIDManagerSetDeviceMatchingMultiple(c->hid_manager, matcher);
     CFRelease(matcher);
 
