@@ -6,6 +6,11 @@
 static void callback(int type, int page, int usage, int value)
 {
     printf("type=%d, page=%d, usage=%d, value=%d\n", type, page, usage, value);
+
+    /* end main loop if push esc key */
+    if (2 == type && 7 == page && 41 == usage && 0 == value) {
+        CFRunLoopStop(CFRunLoopGetCurrent());
+    }
 }
 
 int main()
