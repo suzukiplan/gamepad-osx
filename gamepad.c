@@ -59,7 +59,7 @@ static void device_attached(void* ctx, IOReturn result, void* sender, IOHIDDevic
     CFStringGetCString(name, d->name, 1024, kCFStringEncodingUTF8);
 
 #ifdef DEBUG
-    printf("detected device: %s\n", d->name);
+    printf("attched device: %s\n", d->name);
 #endif
 
     IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
@@ -71,6 +71,35 @@ static void device_attached(void* ctx, IOReturn result, void* sender, IOHIDDevic
     } else {
         c->devices_head = d;
         c->devices_tail = c->devices_head;
+    }
+}
+
+static void device_detached(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef device)
+{
+    struct gamepad_context* c = (struct gamepad_context*)ctx;
+    struct gamepad_device* prev;
+    struct gamepad_device* cur;
+    struct gamepad_device* next;
+
+    for (prev = NULL, cur = c->devices_head; cur; cur = cur->next) {
+        if (cur->device == device) {
+            if (NULL == prev) {
+                c->devices_head = cur->next;
+                if (NULL == c->devices_head) c->devices_tail = NULL;
+            } else if (cur == c->devices_tail) {
+                c->devices_tail = prev;
+                prev->next = NULL;
+            } else {
+                prev->next = cur->next;
+            }
+#ifdef DEBUG
+            printf("detached device: %s\n", cur->name);
+#endif
+            IOHIDDeviceClose(cur->device, kIOHIDOptionsTypeNone);
+            free(cur);
+            return;
+        }
+        prev = cur;
     }
 }
 
@@ -100,6 +129,7 @@ void* gamepad_init()
     CFRelease(matcher);
 
     IOHIDManagerRegisterDeviceMatchingCallback(c->hid_manager, device_attached, c);
+    IOHIDManagerRegisterDeviceRemovalCallback(c->hid_manager, device_detached, c);
     IOHIDManagerScheduleWithRunLoop(c->hid_manager, CFRunLoopGetMain(), kCFRunLoopCommonModes);
     IOHIDManagerOpen(c->hid_manager, kIOHIDOptionsTypeNone);
     return c;
