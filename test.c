@@ -26,7 +26,6 @@ int main()
     CFRunLoopRun();
 
     /* terminate gamepad */
-    puts("term");
     gamepad_term(ctx);
     return 0;
 }
