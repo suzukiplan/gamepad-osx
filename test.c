@@ -6,13 +6,13 @@ int main()
     void* ctx;
 
     /* initialize gamepad */
-    ctx = init_gamepad();
+    ctx = gamepad_init();
     if (!ctx) {
         puts("init failed");
         return -1;
     }
 
     /* terminate gamepad */
-    term_gamepad(ctx);
+    gamepad_term(ctx);
     return 0;
 }

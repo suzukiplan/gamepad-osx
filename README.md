@@ -11,9 +11,9 @@
 ## API specification
 ### initialize/terminate
 ```c
-void* init_gamepad();
-void term_gamepad(void* ctx);
+void* gamepad_init();
+void gamepad_term(void* ctx);
 ```
-- `init_gamepad` は gamepad の device context を返す (失敗時は `NULL` を返す)
-- `term_gamepad` は `init_gamepad` で確保した gamepad の device context を開放する
+- `gamepad_init` は gamepad の device context を返す (失敗時は `NULL` を返す)
+- `gamepad_term` は `gamepad_init` で確保した gamepad の device context を開放する
 

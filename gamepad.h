@@ -4,8 +4,8 @@
 extern "C" {
 #endif
 
-void* init_gamepad();
-void term_gamepad(void* ctx);
+void* gamepad_init();
+void gamepad_term(void* ctx);
 
 #ifdef __cplusplus
 };

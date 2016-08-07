@@ -4,7 +4,7 @@ struct gamepad_context {
     IOHIDManagerRef hid_manager;
 };
 
-void* init_gamepad()
+void* gamepad_init()
 {
     struct gamepad_context* c;
     c = (struct gamepad_context*)malloc(sizeof(struct gamepad_context));
@@ -14,7 +14,7 @@ void* init_gamepad()
     return c;
 }
 
-void term_gamepad(void* ctx)
+void gamepad_term(void* ctx)
 {
     struct gamepad_context* c = (struct gamepad_context*)ctx;
     if (c->hid_manager) CFRelease(c->hid_manager);
