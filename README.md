@@ -9,7 +9,7 @@
 - 使いたい XCode プロジェクト で以下を実施
   - `gamepad.c` と `gamepad.h` を組み込む
   - IOKit.framework を追加
-- APIを利用 (gamepad の API の 言語インタフェース は C規約です)
+- APIを利用 (言語インタフェース は C規約です)
 
 ## API specification
 ### initialize
