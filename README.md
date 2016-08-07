@@ -2,6 +2,9 @@
 - mac OS (osx) の IOKit を用いた ゲームパッド を使うプログラムです
 - GameController framework と違い, 様々な種類の ゲームパッド を認識できます
 
+## License
+[MIT](https://github.com/suzukiplan/gamepad-osx/blob/master/LICENSE.txt)
+
 ## How to use
 - 使いたい XCode プロジェクト で以下を実施
   - `gamepad.c` と `gamepad.h` を組み込む
