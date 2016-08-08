@@ -1,5 +1,8 @@
 # CHANGES
 
+## Version 1.1.1
+- XCode でビルドした時に警告が出ないようにする
+
 ## Version 1.1.0
 - キーボード と マウス の入力にも対応
 - gamepad_init の仕様を変更 (破壊的変更)
