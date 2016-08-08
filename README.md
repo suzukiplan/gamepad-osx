@@ -34,7 +34,7 @@ void gamepad_set_callback(void* ctx, void (*callback)(int type, int page, int us
 device name = `Elecom Wired Gamepad`
 
 |type|page|usage|value|input|description|
-|:---:|:---:|:---:|:---:|:---|:---|
+|:---:|:---:|:---:|:---:|:---:|:---|
 |1|1|48|0|`X axis -`|左カーソルを入力|
 |1|1|48|255|`X axis +`|右カーソルを入力|
 |1|1|48|128|`X axis 0`|左右カーソルを離す|
@@ -47,7 +47,7 @@ device name = `Elecom Wired Gamepad`
 device name = `Apple Internal Keyboard / Trackpad`
 
 |type|page|usage|value|input|description|
-|:---:|:---:|:---:|:---:|:---|:---|
+|:---:|:---:|:---:|:---:|:---:|:---|
 |2|7|80|0 or 1|←|左カーソルを 押す(value=1) or 離す(value=0)|
 |2|7|79|0 or 1|→|右カーソルを 押す(value=1) or 離す(value=0)|
 |2|7|82|0 or 1|↑|上カーソルを 押す(value=1) or 離す(value=0)|
