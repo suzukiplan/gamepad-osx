@@ -27,7 +27,7 @@ $ ./test
 ```c
 #include "gamepad.h"
 
-/* describe callback function */
+/* declare callback function */
 void callback(int type, int page, int usage, int value)
 {
     printf("type=%d, page=%d, usage=%d, value=%d\n", type, page, usage, value);
