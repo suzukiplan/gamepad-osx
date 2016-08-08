@@ -15,6 +15,8 @@
 
 ## Example
 ```c
+#include "gamepad.h"
+
 /* describe callback function */
 void callback(int type, int page, int usage, int value)
 {
