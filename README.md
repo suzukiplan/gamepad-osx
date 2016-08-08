@@ -26,7 +26,7 @@ void callback(int type, int page, int usage, int value)
 int main()
 {
     /* initialize gamepad */
-    ctx = gamepad_init(1, 1, 0);
+    void* ctx = gamepad_init(1, 1, 0);
     if (!ctx) {
         puts("init failed");
         return -1;
