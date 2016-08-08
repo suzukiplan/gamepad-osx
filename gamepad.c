@@ -36,7 +36,7 @@ static void device_input(void* ctx, IOReturn result, void* sender, IOHIDValueRef
     struct gamepad_context* c = (struct gamepad_context*)ctx;
     if (c->callback) {
         IOHIDElementRef element = IOHIDValueGetElement(value);
-        c->callback(IOHIDElementGetType(element), IOHIDElementGetUsagePage(element), IOHIDElementGetUsage(element), IOHIDValueGetIntegerValue(value));
+        c->callback((int)IOHIDElementGetType(element), (int)IOHIDElementGetUsagePage(element), (int)IOHIDElementGetUsage(element), (int)IOHIDValueGetIntegerValue(value));
     }
 }
 
@@ -78,7 +78,6 @@ static void device_detached(void* ctx, IOReturn result, void* sender, IOHIDDevic
     struct gamepad_context* c = (struct gamepad_context*)ctx;
     struct gamepad_device* prev;
     struct gamepad_device* cur;
-    struct gamepad_device* next;
 
     for (prev = NULL, cur = c->devices_head; cur; cur = cur->next) {
         if (cur->device == device) {
