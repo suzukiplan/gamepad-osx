@@ -13,6 +13,16 @@
   - Objective-c の XCode プロジェクトで利用できます (実証済み)
   - swift の XCode プロジェクトでも多分利用できます (未確認)
 
+## How to test
+- ターミナルで以下を実行すればテストできます
+- このテストプログラムは入力内容に応じてコールバックの値を出力します
+```
+$ git clone https://github.com/suzukiplan/gamepad-osx.git
+$ cd gamepad-osx
+$ make
+$ ./test
+```
+
 ## Example
 ```c
 #include "gamepad.h"
