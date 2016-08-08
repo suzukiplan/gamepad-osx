@@ -13,8 +13,7 @@
   - Objective-c の XCode プロジェクトで利用できます (実証済み)
   - swift の XCode プロジェクトでも多分利用できます (未確認)
 
-## API specification
-### example
+## Example
 ```c
 /* describe callback function */
 void callback(int type, int page, int usage, int value)
@@ -42,6 +41,7 @@ int main()
 }
 ```
 
+## API specification
 ### initialize gamepad
 ```c
 void* gamepad_init(int useGamePad, int useKeybord, int useMouse)
