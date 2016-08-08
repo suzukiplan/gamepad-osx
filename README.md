@@ -14,7 +14,35 @@
   - swift の XCode プロジェクトでも多分利用できます (未確認)
 
 ## API specification
-### initialize
+### example
+```c
+/* describe callback function */
+void callback(int type, int page, int usage, int value)
+{
+    printf("type=%d, page=%d, usage=%d, value=%d\n", type, page, usage, value);
+}
+
+int main()
+{
+    /* initialize gamepad */
+    ctx = gamepad_init(1, 1, 0);
+    if (!ctx) {
+        puts("init failed");
+        return -1;
+    }
+
+    /* set callback */
+    gamepad_set_callback(ctx, callback);
+
+    ~~~ main procedure ~~~
+
+    /* terminate gamepad */
+    gamepad_term(ctx);
+    return 0;
+}
+```
+
+### initialize gamepad
 ```c
 void* gamepad_init(int useGamePad, int useKeybord, int useMouse)
 ```
@@ -57,7 +85,7 @@ device name = `Apple Internal Keyboard / Trackpad`
 |2|7|225|0 or 1|SHIFT|SHIFTキーを 押す(value=1) or 離す(value=0)|
 |2|7|41|0 or 1|ESC|ESCキーを 押す(value=1) or 離す(value=0)|
 
-### terminate
+### terminate gamepad
 ```c
 void gamepad_term(void* ctx);
 ```
