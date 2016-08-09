@@ -1,5 +1,11 @@
 # CHANGES
 
+## Version 1.1.3
+- gamepad_set_callback の第1引数(ctx) に NULL を指定できるようにする
+
+## Version 1.1.2
+- README.md の改定のみ
+
 ## Version 1.1.1
 - XCode でビルドした時に警告が出ないようにする
 
