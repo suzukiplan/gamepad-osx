@@ -144,6 +144,7 @@ void* gamepad_init(int useGamePad, int useKeybord, int useMouse)
 void gamepad_set_callback(void* ctx, void (*callback)(int type, int page, int usage, int value))
 {
     struct gamepad_context* c = (struct gamepad_context*)ctx;
+    if (!c) return;
     c->callback = callback;
 }
 
